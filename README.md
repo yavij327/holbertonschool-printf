@@ -1,131 +1,75 @@
-Create your own printf function
+# _printf
 
-# **Resources**
-## **Read or watch:**
+## Description
 
-[Secrets of printf](https://s3.eu-west-3.amazonaws.com/hbtn.intranet/uploads/misc/2022/11/d38f88e96a617135804dca9f9c49632751e06aa7.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MYA5JM5DUTZGMZG%2F20241202%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20241202T034441Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=793df3ae58bf92c6e13255652474f2aca9671edf386a622755d2be5ca2cf6b7c)
-Group Projects concept page (Don’t forget to read this)
-Flowcharts concept page
+_printf is a custom implementation of the C standard library’s printf function. It produces formatted output to the standard output stream (stdout). This project replicates the functionality of printf with support for basic conversion specifiers.
 
-## **man or help:**
+# Features
 
-- 'printf (3)'
+Supports the following format specifiers:
 
-# **Requirements**
+- %c: Prints a single character.
+- %s: Prints a string.
+- %%: Prints a literal %.
+- %d / %i: Prints signed decimal integers.
 
-# **General**
+# Usage
 
-- Allowed editors: 'vi', 'vim', 'emacs'
-- All your files will be compiled on Ubuntu 20.04 LTS using 'gcc', using the options '-Wall -Werror -Wextra -pedantic -std=gnu89'
-- All your files should end with a new line
-- A 'README.md' file, at the root of the folder of the project is mandatory
-- Your code should use the 'Betty' style. It will be checked using betty-style.pl and betty-doc.pl
-- You are not allowed to use global variables
-- No more than 5 functions per file
-- In the following examples, the 'main.c' files are shown as examples. You can use them to test your functions, but you don’t have to push them to your repo (if you do we won’t take them into account). We will use our own 'main.c' files at compilation; do not push your own 'main.c' file. Our 'main.c' files might be different from the one shown in the examples
-- The prototypes of all your functions should be included in your header file called 'main.h'
-- Don’t forget to push your header file
-- All your header files should be include guarded
-- Note that we will not provide the '_putchar' function for this project.
+## Compilation
 
-# **GitHub**
+To compile the _printf function:
 
-**There should be one project repository per group. If you clone/fork/whatever a project repository with the same name before the second deadline, you risk a 0% score.**
+ ' gcc -Wall -Wextra -Werror -pedantic -std=gnu89 *.c -o printf '
 
-# More Info
+## Exmple
 
-# **Authorized functions and macros**
+''' #include "main.h"
 
-- 'write (man 2 write)'
-- 'malloc (man 3 malloc)'
-- 'free (man 3 free)'
-- 'va_start (man 3 va_start)'
-- 'va_end (man 3 va_end)'
-- 'va_copy (man 3 va_copy)'
-- 'va_arg (man 3 va_arg)'
-
- # **Compilation**
-
- - Your code will be compiled this way:
-'''
- $ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c
-
--  As a consequence, be careful not to push any c file containing a main function in the root directory of your project (you could have a test folder containing all your tests files including main functions)
--  Our main files will include your main header file (main.h): #include main.h
- - You might want to look at the gcc flag -Wno-format when testing with your _printf and the standard printf. Example of test file that you could use:
-'''
-alex@ubuntu:~/c/printf$ cat main.c 
-#include <limits.h>
-#include <stdio.h>
-#include "main.h"
-
-/**
- * main - Entry point
- *
- * Return: Always 0
- */
 int main(void)
 {
-    int len;
-    int len2;
-    unsigned int ui;
-    void *addr;
+    _printf("Character: %c\n", 'H');
+    _printf("String: %s\n", "Hello, world!");
+    _printf("Integer: %d\n", 12345);
+    _printf("Percent sign: %%\n");
 
-    len = _printf("Let's try to printf a simple sentence.\n");
-    len2 = printf("Let's try to printf a simple sentence.\n");
-    ui = (unsigned int)INT_MAX + 1024;
-    addr = (void *)0x7ffe637541f0;
-    _printf("Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
-    _printf("Negative:[%d]\n", -762534);
-    printf("Negative:[%d]\n", -762534);
-    _printf("Unsigned:[%u]\n", ui);
-    printf("Unsigned:[%u]\n", ui);
-    _printf("Unsigned octal:[%o]\n", ui);
-    printf("Unsigned octal:[%o]\n", ui);
-    _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    _printf("Character:[%c]\n", 'H');
-    printf("Character:[%c]\n", 'H');
-    _printf("String:[%s]\n", "I am a string !");
-    printf("String:[%s]\n", "I am a string !");
-    _printf("Address:[%p]\n", addr);
-    printf("Address:[%p]\n", addr);
-    len = _printf("Percent:[%%]\n");
-    len2 = printf("Percent:[%%]\n");
-    _printf("Len:[%d]\n", len);
-    printf("Len:[%d]\n", len2);
-    _printf("Unknown:[%r]\n");
-    printf("Unknown:[%r]\n");
     return (0);
-}
-alex@ubuntu:~/c/printf$ gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format *.c
-alex@ubuntu:~/c/printf$ ./printf
-Let's try to printf a simple sentence.
-Let's try to printf a simple sentence.
-Length:[39, 39]
-Length:[39, 39]
-Negative:[-762534]
-Negative:[-762534]
-Unsigned:[2147484671]
-Unsigned:[2147484671]
-Unsigned octal:[20000001777]
-Unsigned octal:[20000001777]
-Unsigned hexadecimal:[800003ff, 800003FF]
-Unsigned hexadecimal:[800003ff, 800003FF]
-Character:[H]
-Character:[H]
-String:[I am a string !]
-String:[I am a string !]
-Address:[0x7ffe637541f0]
-Address:[0x7ffe637541f0]
-Percent:[%]
-Percent:[%]
-Len:[12]
-Len:[12]
-Unknown:[%r]
-Unknown:[%r]
-alex@ubuntu:~/c/printf$
+}'''
 
-- We strongly encourage you to work all together on a set of tests
-- If the task does not specify what to do with an edge case, do the same as 'printf'
+'''Character: H
+String: Hello, world!
+Integer: 12345
+Percent sign: %'''
+
+
+
+# Limitations
+
+- Does not handle flag characters (eg. ,+,#, ).
+-  Does not support field width or precision.
+- Does not handle length modifiers (e.g., l, h).
+
+# Requirements
+
+- Allowed editord 'vi', 'vim', 'emacs'.
+- All code must be compiled on Ubuntu 20.04 LTS using gcc with the following options:
+
+''' gcc -Wall -Wextra -Werror -pedantic -std=gnu89 '''
+
+- Code adheres to the Betty coding style.
+
+# Testing 
+
+You can test _printf against the standard printf to verify its output:
+
+'''gcc -Wall -Wextra -Werror -pedantic -std=gnu89 _printf.c main.c _putchar.c -o printf_test
+./printf_test'''
+
+
+# Contrubuting
+
+Contributions, issues, and feature requests are welcome! Feel free to submit a pull request or open an issue on GitHub.
+
+# Author
+
+- [Yavier Maldonado](https://github.com/yavij327)
+
