@@ -22,8 +22,8 @@ To compile the _printf function:
  gcc -Wall -Wextra -Werror -pedantic -std=gnu89 *.c -o printf
 '''
 ## Exmple
-'''
- #include "main.h"
+
+''' #include "main.h"
 
 int main(void)
 {
@@ -33,24 +33,14 @@ int main(void)
     _printf("Percent sign: %%\n");
 
     return (0);
-}
-'''
+}'''
 
-'''
-Character: H
+'''Character: H
 String: Hello, world!
 Integer: 12345
-Percent sign: %
-'''
+Percent sign: %'''
 
-# Files
 
-| File      | Description                                          |
-|----------------------------------------------------------------- |
-|main.h      | Header file for prototypes.                         |
-| _printf.c  | Core '_printf' implementation.                      |
-| _putchar.c | Helper function to output a single character stdout.|
-| _printf.3  | Man page for the function.                          |
 
 # Limitations
 
@@ -62,19 +52,18 @@ Percent sign: %
 
 - Allowed editord 'vi', 'vim', 'emacs'.
 - All code must be compiled on Ubuntu 20.04 LTS using gcc with the following options:
-'''
-gcc -Wall -Wextra -Werror -pedantic -std=gnu89
-'''
+
+''' gcc -Wall -Wextra -Werror -pedantic -std=gnu89 '''
+
 - Code adheres to the Betty coding style.
 
 # Testing 
 
 You can test _printf against the standard printf to verify its output:
 
-'''
-gcc -Wall -Wextra -Werror -pedantic -std=gnu89 _printf.c main.c _putchar.c -o printf_test
-./printf_test
-'''
+'''gcc -Wall -Wextra -Werror -pedantic -std=gnu89 _printf.c main.c _putchar.c -o printf_test
+./printf_test'''
+
 
 # Contrubuting
 
