@@ -18,9 +18,9 @@ Supports the following format specifiers:
 ## Compilation
 
 To compile the _printf function:
-'''
- gcc -Wall -Wextra -Werror -pedantic -std=gnu89 *.c -o printf
-'''
+
+ ' gcc -Wall -Wextra -Werror -pedantic -std=gnu89 *.c -o printf '
+
 ## Exmple
 
 ''' #include "main.h"
